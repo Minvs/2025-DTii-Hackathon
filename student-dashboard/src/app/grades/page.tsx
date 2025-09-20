@@ -1,11 +1,15 @@
+"use client";
+
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ProtectedRoute } from "@/components/protected-route";
 import { BarChart3, TrendingUp, TrendingDown } from "lucide-react";
 
 export default function Grades() {
   return (
-    <DashboardLayout>
+    <ProtectedRoute>
+      <DashboardLayout>
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Grades</h1>
@@ -147,6 +151,7 @@ export default function Grades() {
           </Card>
         </div>
       </div>
-    </DashboardLayout>
+      </DashboardLayout>
+    </ProtectedRoute>
   );
 }

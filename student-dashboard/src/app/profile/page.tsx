@@ -1,11 +1,15 @@
+"use client";
+
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
+import { ProtectedRoute } from "@/components/protected-route";
 import { GraduationCap, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Profile() {
   return (
-    <DashboardLayout>
+    <ProtectedRoute>
+      <DashboardLayout>
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Profile</h1>
@@ -76,6 +80,7 @@ export default function Profile() {
           </Card>
         </div>
       </div>
-    </DashboardLayout>
+      </DashboardLayout>
+    </ProtectedRoute>
   );
 }

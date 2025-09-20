@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useAuth } from "@/contexts/auth-context";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   LayoutDashboard, 
   BookOpen, 
@@ -13,7 +15,9 @@ import {
   Users, 
   Settings,
   GraduationCap,
-  BarChart3
+  BarChart3,
+  LogOut,
+  Shield
 } from "lucide-react";
 
 const navigationItems = [
@@ -62,8 +66,28 @@ const bottomItems = [
   },
 ];
 
+const adminItems = [
+  {
+    title: "Admin Panel",
+    href: "/admin",
+    icon: Shield,
+  },
+  {
+    title: "Course Management",
+    href: "/admin/courses",
+    icon: BookOpen,
+  },
+];
+
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
 
   return (
     <div className="flex h-full w-64 flex-col border-r bg-background">
@@ -102,6 +126,37 @@ export function Sidebar() {
 
       <Separator />
 
+      {/* Admin Navigation (if admin) */}
+      {user?.isAdmin && (
+        <>
+          <Separator />
+          <div className="p-4 space-y-1">
+            <p className="text-xs font-medium text-muted-foreground px-2">ADMIN</p>
+            {adminItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Button
+                  key={item.href}
+                  variant={isActive ? "secondary" : "ghost"}
+                  className={cn(
+                    "w-full justify-start gap-2",
+                    isActive && "bg-secondary text-secondary-foreground"
+                  )}
+                  asChild
+                >
+                  <Link href={item.href}>
+                    <item.icon className="h-4 w-4" />
+                    {item.title}
+                  </Link>
+                </Button>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      <Separator />
+
       {/* Bottom Navigation */}
       <div className="p-4 space-y-1">
         {bottomItems.map((item) => {
@@ -123,6 +178,21 @@ export function Sidebar() {
             </Button>
           );
         })}
+        
+        {/* Logout Button */}
+        <Button
+          variant="ghost"
+          className="w-full justify-start gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
+          onClick={handleLogout}
+        >
+          <LogOut className="h-4 w-4" />
+          Logout
+        </Button>
+        
+        {/* Theme Toggle */}
+        <div className="px-2">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );

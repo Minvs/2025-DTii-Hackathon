@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/auth-context";
+import { CourseProvider } from "@/contexts/course-context";
+import { ThemeProvider } from "@/contexts/theme-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +20,10 @@ export const metadata: Metadata = {
   description: "A comprehensive dashboard for students to manage their academic journey",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#FAF8EC",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +34,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <AuthProvider>
+            <CourseProvider>
+              {children}
+            </CourseProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

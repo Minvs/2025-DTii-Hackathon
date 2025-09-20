@@ -1,7 +1,13 @@
+"use client";
+
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ProtectedRoute } from "@/components/protected-route";
+import { useAuth } from "@/contexts/auth-context";
+import { useRouter } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   BookOpen, 
   Calendar, 
@@ -10,26 +16,62 @@ import {
   Clock, 
   TrendingUp,
   AlertCircle,
-  CheckCircle
+  CheckCircle,
+  LogOut,
+  Settings
 } from "lucide-react";
 
 export default function Dashboard() {
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
+
+  const handleAdminAccess = () => {
+    router.push("/admin");
+  };
+
   return (
-    <DashboardLayout>
+    <ProtectedRoute>
+      <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
             <p className="text-muted-foreground">
-              Welcome back! Here's what's happening with your studies.
+              Welcome back, {user?.username}! Here's what's happening with your studies.
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Badge variant="outline" className="text-sm">
-              Spring 2025
-            </Badge>
-          </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="text-sm">
+                Spring 2025
+              </Badge>
+              <ThemeToggle />
+              {user?.isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleAdminAccess}
+                  className="gap-2"
+                >
+                  <Settings className="h-4 w-4" />
+                  Admin Panel
+                </Button>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleLogout}
+                className="gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Logout
+              </Button>
+            </div>
         </div>
 
         {/* Stats Grid */}
@@ -202,6 +244,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
       </div>
-    </DashboardLayout>
+      </DashboardLayout>
+    </ProtectedRoute>
   );
 }
