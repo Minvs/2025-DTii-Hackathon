@@ -100,7 +100,7 @@ export function Sidebar() {
       <div className="flex h-16 items-center px-6">
         <div className="flex items-center gap-2">
           <GraduationCap className="h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">Buddy Planner</span>
+          <span className="text-lg font-semibold title-font">Buddy Planner</span>
         </div>
       </div>
 

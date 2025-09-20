@@ -123,7 +123,7 @@ export default function PsychologistPage() {
           {/* Header */}
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+              <h1 className="text-3xl font-bold tracking-tight title-font flex items-center gap-2">
                 <Heart className="h-8 w-8 text-red-500" />
                 Psychologist Support
               </h1>

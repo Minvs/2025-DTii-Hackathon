@@ -38,7 +38,7 @@ export default function Login() {
               <GraduationCap className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold">Buddy Planner</CardTitle>
+          <CardTitle className="text-2xl font-bold title-font">Buddy Planner</CardTitle>
           <CardDescription>
             Sign in to access your student dashboard
           </CardDescription>
