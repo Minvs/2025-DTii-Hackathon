@@ -43,42 +43,9 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-.light {
+:root {
   --radius: 0.625rem;
-  --background: #FAF8EC;
-  --foreground: #FFFEF5;
-  --card: #EDEDED;
-  --card-foreground: #FFFEF5;
-  --popover: #FEFCF5;
-  --popover-foreground: #5A5449;
-  --primary: #FAF8EC;
-  --primary-foreground: #FAF8EC;
-  --secondary: #F5F1E8;
-  --secondary-foreground: #5A5449;
-  --muted: #F0EDE0;
-  --muted-foreground: #8B8475;
-  --accent: #F0EDE0;
-  --accent-foreground: #5A5449;
-  --destructive: #D97706;
-  --border: #F0EDE0;
-  --input: #F0EDE0;
-  --ring: #A68B5B;
-  --chart-1: #A68B5B;
-  --chart-2: #B89A6B;
-  --chart-3: #8B8475;
-  --chart-4: #C4A570;
-  --chart-5: #9A8B5B;
-  --sidebar: #F5F1E8;
-  --sidebar-foreground: #5A5449;
-  --sidebar-primary: #A68B5B;
-  --sidebar-primary-foreground: #FAF8EC;
-  --sidebar-accent: #F0EDE0;
-  --sidebar-accent-foreground: #5A5449;
-  --sidebar-border: #F0EDE0;
-  --sidebar-ring: #A68B5B;
-}
-
-.dark {
+  /* Dark mode colors as default */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

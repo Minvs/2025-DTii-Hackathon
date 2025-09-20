@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ProtectedRoute } from "@/components/protected-route";
 import { useAuth } from "@/contexts/auth-context";
 import { useRouter } from "next/navigation";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   BookOpen, 
   Calendar, 
@@ -50,7 +49,6 @@ export default function Dashboard() {
               <Badge variant="outline" className="text-sm">
                 Spring 2025
               </Badge>
-              <ThemeToggle />
               {user?.isAdmin && (
                 <Button
                   variant="outline"

@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/contexts/auth-context";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   LayoutDashboard, 
   BookOpen, 
@@ -17,7 +16,8 @@ import {
   GraduationCap,
   BarChart3,
   LogOut,
-  Shield
+  Shield,
+  Heart
 } from "lucide-react";
 
 const navigationItems = [
@@ -50,6 +50,11 @@ const navigationItems = [
     title: "Classmates",
     href: "/classmates",
     icon: Users,
+  },
+  {
+    title: "Psychologist",
+    href: "/psychologist",
+    icon: Heart,
   },
 ];
 
@@ -95,7 +100,7 @@ export function Sidebar() {
       <div className="flex h-16 items-center px-6">
         <div className="flex items-center gap-2">
           <GraduationCap className="h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">StudentHub</span>
+          <span className="text-lg font-semibold">Buddy Planner</span>
         </div>
       </div>
 
@@ -179,6 +184,7 @@ export function Sidebar() {
           );
         })}
         
+        
         {/* Logout Button */}
         <Button
           variant="ghost"
@@ -188,11 +194,6 @@ export function Sidebar() {
           <LogOut className="h-4 w-4" />
           Logout
         </Button>
-        
-        {/* Theme Toggle */}
-        <div className="px-2">
-          <ThemeToggle />
-        </div>
       </div>
     </div>
   );

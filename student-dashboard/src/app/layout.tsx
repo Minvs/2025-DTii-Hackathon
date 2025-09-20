@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/auth-context";
 import { CourseProvider } from "@/contexts/course-context";
-import { ThemeProvider } from "@/contexts/theme-context";
+import { ReservationProvider } from "@/contexts/reservation-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,12 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Student Dashboard",
-  description: "A comprehensive dashboard for students to manage their academic journey",
+  title: "Buddy Planner",
+  description: "A comprehensive dashboard for students to manage their academic journey and mental health support",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAF8EC",
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
@@ -30,17 +30,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <AuthProvider>
-            <CourseProvider>
+        <AuthProvider>
+          <CourseProvider>
+            <ReservationProvider>
               {children}
-            </CourseProvider>
-          </AuthProvider>
-        </ThemeProvider>
+            </ReservationProvider>
+          </CourseProvider>
+        </AuthProvider>
       </body>
     </html>
   );

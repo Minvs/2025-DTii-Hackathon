@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { GraduationCap, Eye, EyeOff } from "lucide-react";
 
 export default function Login() {
@@ -31,10 +30,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FAF8EC] to-[#F5F1E8] dark:from-gray-900 dark:to-gray-800">
-      <div className="absolute top-4 right-4">
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
@@ -42,7 +38,7 @@ export default function Login() {
               <GraduationCap className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold">StudentHub</CardTitle>
+          <CardTitle className="text-2xl font-bold">Buddy Planner</CardTitle>
           <CardDescription>
             Sign in to access your student dashboard
           </CardDescription>

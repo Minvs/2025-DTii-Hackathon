@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ProtectedRoute } from "@/components/protected-route";
 import { useAuth } from "@/contexts/auth-context";
 import { useRouter } from "next/navigation";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   Users, 
   BookOpen, 
@@ -53,7 +52,6 @@ export default function AdminDashboard() {
               <Badge variant="destructive" className="text-sm">
                 Admin Access
               </Badge>
-              <ThemeToggle />
               <Button
                 variant="outline"
                 size="sm"
